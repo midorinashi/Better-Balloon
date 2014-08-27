@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/lightBlue"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/lightBlue" >
+
+        <Button
+            android:id="@+id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:background="@color/buttonBlue"
+            android:onClick="respondNo"
+            android:text="@string/fa_times"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="@color/buttonBlue"
+            android:onClick="respondYes"
+            android:text="@string/fa_check"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/scrollToRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttons"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/white"
+                android:padding="10dp" >
+
+                <ImageView
+                    android:id="@+id/eventImage"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginRight="10dp" />
+
+                <com.example.balloon.TextBox
+                    android:id="@+id/creator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/eventImage"
+                    android:layout_toRightOf="@+id/eventImage"
+    				android:animateLayoutChanges="true"
+                    android:text="@string/empty"
+                    android:textSize="14sp"
+	   				custom:fontName="Roboto-Light.ttf" />
+
+                <com.example.balloon.TextBox
+                    android:id="@+id/agenda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/venueInfo"
+                    android:layout_alignLeft="@+id/creator"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/creator"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:maxLines="1"
+    				android:animateLayoutChanges="true"
+                    android:text="@string/empty"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+	   				custom:fontName="Roboto-Light.ttf" 
+                     />
+
+                <com.example.balloon.TextBox
+                    android:id="@+id/timeToRSVP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/eventImage"
+                    android:layout_alignLeft="@+id/venueInfo"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+    				android:animateLayoutChanges="true"
+                    android:textColor="@color/red"
+                    android:textSize="14sp"
+				    custom:fontName="Roboto-Light.ttf" />
+
+                <com.example.balloon.TextBox
+                    android:id="@+id/venueInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/timeToRSVP"
+                    android:layout_alignLeft="@+id/agenda"
+                    android:layout_alignParentRight="true"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+    				android:animateLayoutChanges="true"
+                    android:text="@string/empty"
+                    android:textColor="@color/blue"
+                    android:textSize="14sp" 
+				    custom:fontName="Roboto-Light.ttf" />
+
+            </RelativeLayout>
+            
+            <com.example.balloon.TextBox
+                android:id="@+id/startsAt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+    			android:animateLayoutChanges="true"
+                android:background="@color/white"
+	    		custom:fontName="Roboto-Light.ttf" />
+            
+            <com.example.balloon.TextBox
+                android:id="@+id/updatesHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+    			android:animateLayoutChanges="true"
+                android:text="@string/updates_header"
+                android:textColor="@color/blue"
+                android:visibility="gone"
+	    		custom:fontName="Roboto-Light.ttf" />
+
+            <LinearLayout
+                android:id="@+id/updates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+    			android:animateLayoutChanges="true"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+            
+            <com.example.balloon.TextBox
+                android:id="@+id/commentsHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+    			android:animateLayoutChanges="true"
+                android:text="@string/comments_header"
+                android:textColor="@color/blue"
+	    		custom:fontName="Roboto-Light.ttf" />
+
+            <LinearLayout
+                android:id="@+id/comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+    			android:animateLayoutChanges="true"
+                android:orientation="vertical" >
+                
+            </LinearLayout>
+
+            <com.example.balloon.TextBox
+                android:id="@+id/comingHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+    			android:animateLayoutChanges="true"
+                android:text="@string/coming_header"
+                android:textColor="@color/blue"
+	    		custom:fontName="Roboto-Light.ttf" />
+
+            <LinearLayout
+                android:id="@+id/coming"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+    			android:animateLayoutChanges="true"
+                android:orientation="vertical" >
+                
+        	</LinearLayout>
+        	
+            <com.example.balloon.TextBox
+                android:id="@+id/notComingHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+    			android:animateLayoutChanges="true"
+                android:text="@string/not_coming_header"
+                android:textColor="@color/blue"
+                android:visibility="gone"
+	    		custom:fontName="Roboto-Light.ttf" />
+
+            <LinearLayout
+                android:id="@+id/notComing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+    			android:animateLayoutChanges="true"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+
+        </LinearLayout>
+        
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+</RelativeLayout>
